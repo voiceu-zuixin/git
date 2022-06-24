@@ -54,6 +54,13 @@ git diff HEAD：查看与上一次 commit 的区别
 
 `git branch <branchName>` 新建分支
 
-例如：我新建分支`develop`，但此时仍处于`master`，此时新建的分支，有着当前所有的 commit，并且 HEAD 指向 develop 和 master 分支，相当于有着三个指针指向当前的该节点，如果我此时继续在master上修改代码并提交，HEAD会随着master不断的向后移动更新，但是develop则是会保持在这个地方，相当于备份。
+例如：我新建分支`develop`，但此时仍处于`master`，此时新建的分支，有着当前所有的 commit，并且 HEAD 指向 develop 和 master 分支，相当于有着三个指针指向当前的该节点，如果我此时继续在 master 上修改代码并提交，HEAD 会随着 master 不断的向后移动更新，但是 develop 则是会保持在这个地方，相当于备份。此时再去`git log`，就会发现，HEAD 只指向了 master。
 
+注意此时可以不用 commit 暂存区的更改到仓库，使用 `git stash` 命令，可以实现这一操作。并且此时甚至可以不用添加到暂存区，ide 中 git 都会跟踪那些改变了的文件，切回来的时候再用`git stash apply`就可以恢复了，
 
+https://juejin.cn/post/7071780876501123085#heading-1
+
+`git stash list` 列出 stash 的所有记录
+`git stash clear` 删除 stash 的所有记录
+`git stash pop` 应用最近一次的 stash，随后删除该记录
+`git stash drop` 删除最近的一次 stash
