@@ -84,8 +84,23 @@ https://juejin.cn/post/7071780876501123085#heading-1
 
 ## 分支改名
 
-分支改名的思路可以是，在当前节点创建一个新分支，并切换到该新分支，删除旧分支，新分支的名称就是想要改的名字
+`git branch -m <newName>` 为当前分支改名
+
+`git branch -m <target_branch> <newName>` 为指定分支改名
+
+注意改名时，大小写不区分，所以用上面的命令要把 NewBranch 改成 newBranch，是不行的，因为在命令中，NewBranch 就是 newBranch，甚至可以是 newbranch ，要强制改名，使用下面的命令 `-M`
+
+`git branch -M <target_branch> <newName>` 为指定分支强制改名
+
+分支改名的思路还可以是，在当前节点创建一个新分支，并切换到该新分支，删除旧分支，新分支的名称就是想要改的名字
 
 `git checkout -b feature NewBranch` 基于 NewBranch 新建一个 feature 分支，并切换到该新分支
 
 `git branch -d NewBranch` 删除 NewBranch 分支
+
+## 查看 merge 情况
+
+`git branch --merged` Shows branches that are all merged in to your current branch
+
+`git branch --no-merged` Shows branches that are not merged in to your current branch
+
