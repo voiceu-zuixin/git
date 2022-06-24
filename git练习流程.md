@@ -54,9 +54,11 @@ git diff HEAD：查看与上一次 commit 的区别
 
 `git branch -a` 列出所有本地分支和远程分支
 
-`git branch <branchName>` 新建分支
+`git branch <branchName>` 在当前节点新建分支
 
 例如：我新建分支`develop`，但此时仍处于`master`，此时新建的分支，有着当前所有的 commit，并且 HEAD 指向 develop 和 master 分支，相当于有着三个指针指向当前的该节点，如果我此时继续在 master 上修改代码并提交，HEAD 会随着 master 不断的向后移动更新，但是 develop 则是会保持在这个地方，相当于备份。此时再去`git log`，就会发现，HEAD 只指向了 master。
+
+`git branch <branchName> <target_branch>` 基于 target_branch 节点处新建 branchName 分支
 
 ## `git stash`
 
@@ -103,4 +105,3 @@ https://juejin.cn/post/7071780876501123085#heading-1
 `git branch --merged` Shows branches that are all merged in to your current branch
 
 `git branch --no-merged` Shows branches that are not merged in to your current branch
-
