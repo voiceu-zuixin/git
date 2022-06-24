@@ -14,7 +14,7 @@ git push -u origin master：将本地的 master 分支推送到远程 origin 主
 git pull origin master：将远程主机 origin 的代码取回本地，与本地的 master 分支合并
 git diff HEAD：查看与上一次 commit 的区别
 
-# 暂存区（git add）
+# 暂存区（index）
 
 ## 添加到暂存区
 
@@ -34,5 +34,6 @@ git diff HEAD：查看与上一次 commit 的区别
 `git reset HEAD -- filename` 撤销指定目标文件
 `git rm --cached filename` 撤销指定目标文件，比如`git rm --cached 1.js 2.js`
 
-# 代码仓库（git commit -m）
+# 代码仓库（Repository）
 
+`git commit -m "提交信息"` 从暂存区提交到代码仓库
