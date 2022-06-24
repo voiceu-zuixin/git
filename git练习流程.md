@@ -48,6 +48,8 @@ git diff HEAD：查看与上一次 commit 的区别
 
 分清 HEAD，master，main 等，比如 HEAD，在上方的撤销添加到暂存区的文件命令里面也提到过（`git reset HEAD -- <filename>`）， HEAD 是一个指针，指向当前的本地分支，比如此时是 master，那么通过`git log`可以看到 HEAD -> master
 
+## 新建分支
+
 `git branch` 列出所有本地分支
 
 `git branch -a` 列出所有本地分支和远程分支
@@ -56,7 +58,7 @@ git diff HEAD：查看与上一次 commit 的区别
 
 例如：我新建分支`develop`，但此时仍处于`master`，此时新建的分支，有着当前所有的 commit，并且 HEAD 指向 develop 和 master 分支，相当于有着三个指针指向当前的该节点，如果我此时继续在 master 上修改代码并提交，HEAD 会随着 master 不断的向后移动更新，但是 develop 则是会保持在这个地方，相当于备份。此时再去`git log`，就会发现，HEAD 只指向了 master。
 
-- `git stash`
+## `git stash`
 
 注意此时可以不用 commit 暂存区的更改到仓库，使用 `git stash` 命令，可以实现这一操作。并且此时甚至可以不用添加到暂存区，ide 中 git 都会跟踪那些改变了的文件，切回来的时候再用`git stash apply`就可以恢复了，
 
@@ -69,3 +71,21 @@ https://juejin.cn/post/7071780876501123085#heading-1
 `git stash pop` 应用最近一次的 stash，随后删除该记录
 
 `git stash drop` 删除最近的一次 stash
+
+## 新建分支并切换
+
+`git checkout -b NewBranch <MyBranch>` 在新建 NewBranch 分支的同时切换到新分支，后面的 MyBranch 基于某个分支，可以是当前的分支，比如 master，并且如果是当前分支，则可以省略，可以直接写成`git checkout -b NewBranch`
+
+## 删除分支
+
+`git branch -d <分支名>`-d 参数用来删除一个分支，前提是该分支没有未合并的变动。
+
+`git branch -D <分支名>` 强制删除一个分支，不管有没有未合并变化。
+
+## 分支改名
+
+分支改名的思路可以是，在当前节点创建一个新分支，并切换到该新分支，删除旧分支，新分支的名称就是想要改的名字
+
+`git checkout -b feature NewBranch` 基于 NewBranch 新建一个 feature 分支，并切换到该新分支
+
+`git branch -d NewBranch` 删除 NewBranch 分支
